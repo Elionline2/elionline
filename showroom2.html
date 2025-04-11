@@ -53,7 +53,7 @@
 
   .gallery {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* default: 2 per row */
+    grid-template-columns: repeat(2, 1fr); /* 2 columns by default */
     gap: 1.5rem;
   }
 
@@ -136,10 +136,10 @@
     cursor: pointer;
   }
 
-  /* ✅ Responsive Layout */
+  /* ✅ Responsive Layout: One column on small screens */
   @media (max-width: 768px) {
     .gallery {
-      grid-template-columns: 1fr; /* 1 column on tablet */
+      grid-template-columns: 1fr; /* 👈 Switch to single column */
     }
 
     .card img {
@@ -168,15 +168,13 @@
       font-size: 1rem;
     }
 
-    .card-body p {
-      font-size: 0.95rem;
-    }
-
+    .card-body p,
     .modal-content p {
       font-size: 0.95rem;
     }
   }
 </style>
+
 
 </head>
 <body>
