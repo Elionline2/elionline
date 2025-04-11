@@ -16,7 +16,7 @@
         width: 100%;
         justify-content: center;
         flex-wrap: wrap;
-        margin-top: 0px;
+        margin-top: 15px;
     }
     
     .nav-links li {
@@ -222,7 +222,7 @@
   /* Mobile nav styling */
   .nav-links {
     position: fixed;
-    top: 0px;
+    top: 15px;
     left: -100%;
     width: 80%;
     max-width: 300px;
