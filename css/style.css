@@ -568,3 +568,29 @@ img {
     text-align: center;
     font-size: 0.9rem;
 }
+
+
+
+
+
+
+
+
+
+/* back to top styling  */
+.back-to-top {
+    text-align: center;
+    margin-top: 2rem;
+  }
+  
+  .back-to-top .fa-arrow-up {
+    font-size: 30px;
+    color: #fff;
+    text-decoration: none;
+    transition: var(--transition);
+    cursor: pointer;
+  }
+  
+  .back-to-top .fa-arrow-up:hover {
+    color: var(--secondary-color);
+  }
