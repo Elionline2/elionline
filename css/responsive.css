@@ -262,13 +262,28 @@
   .logo span {
     font-size: 2rem;
   }
-  /* .nav-links {
-    top: -150px;
-  }
-  .nav-links.active .close-toggle {
-    top:150px;
-} */
+
 }
+
+
+
+/* ========== FINAL MOBILE MENU POSITIONING ========== */
+@media (max-width: 768px) {
+    .nav-links.active {
+      padding-top: 15px !important; /* Increased from 15px */
+    }
+    .close-toggle {
+      top: 10px !important; /* Slightly lower (was 15px) */
+    }
+    .nav-links.active{
+        top: 48px;
+    }
+    .nav-links{
+    justify-content: flex-start;
+    }
+    
+}
+
 
 
 /* back button */
