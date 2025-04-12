@@ -147,7 +147,68 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
+document.addEventListener('DOMContentLoaded', function() {
+    if (window.innerWidth <= 480) {
+        const observerOptions = {
+            threshold: 0.4,
+            rootMargin: '0px 0px -100px 0px' // Slightly early trigger
+        };
 
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                const item = entry.target;
+                const overlayItems = item.querySelectorAll('.overlay > *');
+                
+                if (entry.isIntersecting) {
+                    // Add animate class
+                    item.classList.add('animate');
+                    
+                    // Reset styles to ensure animation can replay
+                    overlayItems.forEach(el => {
+                        el.style.animation = 'none';
+                        el.offsetHeight; // Trigger reflow
+                        el.style.animation = '';
+                    });
+                } else {
+                    // Remove animate class and reset state
+                    item.classList.remove('animate');
+                    overlayItems.forEach(el => {
+                        el.style.transform = 'translateX(-100%)';
+                        el.style.opacity = '0';
+                        el.style.animation = 'none';
+                    });
+                }
+            });
+        }, observerOptions);
+
+        // Observe all items
+        const items = document.querySelectorAll('.showroom-item');
+        items.forEach(item => {
+            // Initialize hidden state
+            item.querySelectorAll('.overlay > *').forEach(el => {
+                el.style.transform = 'translateX(-100%)';
+                el.style.opacity = '0';
+            });
+            observer.observe(item);
+        });
+
+        // Reset on window resize
+        let resizeTimer;
+        window.addEventListener('resize', function() {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(function() {
+                items.forEach(item => {
+                    if (!item.classList.contains('animate')) {
+                        item.querySelectorAll('.overlay > *').forEach(el => {
+                            el.style.transform = 'translateX(-100%)';
+                            el.style.opacity = '0';
+                        });
+                    }
+                });
+            }, 250);
+        });
+    }
+});
 
 
 
