@@ -147,44 +147,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  if (window.innerWidth <= 480) {
-    const items = document.querySelectorAll('.showroom-item');
 
-    const showClosestOverlay = () => {
-      let closestItem = null;
-      let closestDistance = Infinity;
-      const centerY = window.innerHeight / 2;
-
-      items.forEach(item => {
-        const rect = item.getBoundingClientRect();
-        const itemCenter = rect.top + rect.height / 2;
-        const distance = Math.abs(centerY - itemCenter);
-
-        if (distance < closestDistance) {
-          closestDistance = distance;
-          closestItem = item;
-        }
-      });
-
-      // Hide all overlays
-      items.forEach(item => {
-        item.querySelector('.overlay')?.classList.remove('show');
-      });
-
-      // Show overlay for the closest item
-      if (closestItem) {
-        closestItem.querySelector('.overlay')?.classList.add('show');
-      }
-    };
-
-    // Run on scroll and load
-    window.addEventListener('scroll', showClosestOverlay);
-    showClosestOverlay();
-  }
-});
-</script>
 
 
 
