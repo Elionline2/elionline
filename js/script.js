@@ -24,20 +24,41 @@ function preloadImages() {
 }
 
 // Show image with fade effect
+/**
+ * Shows an image with a smooth crossfade and scale animation
+ * @param {number} index - The index of the image to show in sliderConfig.images
+ */
 function showImage(index) {
-    // Wrap around if at ends
+    // Handle wrap-around for continuous slider (both forward and backward)
     currentIndex = (index + sliderConfig.images.length) % sliderConfig.images.length;
     
-    // Fade out current image
+    // Start transition out:
+    // 1. Set transition properties (duration and easing)
+    // 2. Fade out current image
+    // 3. Slightly shrink image (to 95% size) for depth effect
+    sliderImage.style.transition = `all ${sliderConfig.fadeDuration}ms ease`;
     sliderImage.style.opacity = 0;
+    sliderImage.style.transform = 'scale(0.95)';
     
-    // After fade out completes, change image and fade in
+    /**
+     * After half of the fade duration (when first image is mostly hidden):
+     * 1. Swap the image source
+     * 2. Fade new image in
+     * 3. Return to normal scale (100%)
+     * 
+     * Using half duration creates overlap where both transitions occur,
+     * making the crossfade smoother
+     */
     setTimeout(() => {
+        // Change image source to new image
         sliderImage.src = sliderConfig.images[currentIndex];
+        
+        // Animate new image in
         sliderImage.style.opacity = 1;
-    }, sliderConfig.fadeDuration / 2);
+        sliderImage.style.transform = 'scale(1)';
+        
+    }, sliderConfig.fadeDuration / 2); // Halfway through total transition
 }
-
 // Navigation functions
 function nextImage() {
     showImage(currentIndex + 1);
