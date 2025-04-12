@@ -147,7 +147,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-<script>
+
 document.addEventListener("DOMContentLoaded", () => {
     if (window.innerWidth <= 480) {
         const items = document.querySelectorAll('.showroom-item');
@@ -170,5 +170,5 @@ document.addEventListener("DOMContentLoaded", () => {
         items.forEach(item => observer.observe(item));
     }
 });
-</script>
+
 
