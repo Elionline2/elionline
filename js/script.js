@@ -147,7 +147,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-document.addEventListener('DOMContentLoaded', function() {
+ document.addEventListener('DOMContentLoaded', function() {
     if (window.innerWidth <= 480) {
         const observerOptions = {
             threshold: 0.4,
@@ -209,8 +209,3 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
-
-
-
-
-
