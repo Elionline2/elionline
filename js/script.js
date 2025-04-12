@@ -135,3 +135,40 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
   });
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    if (window.innerWidth <= 480) {
+        const items = document.querySelectorAll('.showroom-item');
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                const overlay = entry.target.querySelector('.overlay');
+                if (overlay) {
+                    if (entry.isIntersecting) {
+                        overlay.classList.add('show');
+                    } else {
+                        overlay.classList.remove('show');
+                    }
+                }
+            });
+        }, {
+            threshold: 0.6 // Adjust for sensitivity
+        });
+
+        items.forEach(item => observer.observe(item));
+    }
+});
+</script>
+
