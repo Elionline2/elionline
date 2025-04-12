@@ -144,7 +144,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-
+// handling the showroom section animations
 
 
  document.addEventListener('DOMContentLoaded', function() {
