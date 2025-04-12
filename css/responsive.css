@@ -284,7 +284,7 @@
     
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
     .showroom-item {
         overflow: hidden;
         min-height: 300px;
