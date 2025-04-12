@@ -147,28 +147,27 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-
 document.addEventListener("DOMContentLoaded", () => {
-    if (window.innerWidth <= 480) {
-        const items = document.querySelectorAll('.showroom-item');
+  if (window.innerWidth <= 480) {
+    const observer = new IntersectionObserver(entries => {
+      // Hide all overlays first
+      document.querySelectorAll('.overlay').forEach(o => o.classList.remove('show'));
 
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                const overlay = entry.target.querySelector('.overlay');
-                if (overlay) {
-                    if (entry.isIntersecting) {
-                        overlay.classList.add('show');
-                    } else {
-                        overlay.classList.remove('show');
-                    }
-                }
-            });
-        }, {
-            threshold: 0.6 // Adjust for sensitivity
-        });
+      // Show only the first visible one
+      const visibleEntry = entries.find(entry => entry.isIntersecting);
+      if (visibleEntry) {
+        const overlay = visibleEntry.target.querySelector('.overlay');
+        overlay.classList.add('show');
+      }
+    }, {
+      threshold: 0.6
+    });
 
-        items.forEach(item => observer.observe(item));
-    }
+    document.querySelectorAll('.showroom-item').forEach(item => observer.observe(item));
+  }
 });
+
+
+
 
 
