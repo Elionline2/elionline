@@ -113,32 +113,41 @@
 
 
         <!-- Contact Section -->
-        <section id="contact" class="contact-section">
-            <h2 class="section-title">Get In Touch</h2>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <p><i class="fa fa-envelope"></i> mwauraelias25@gmail.com</p>
-                    <p><i class="fa fa-phone"></i> +254 703 973 225</p>
-                    <div class="social-icons">
-                        <a href="https://www.facebook.com/p.r.i.n.c.e.m.i.k.e.e.G" target="_blank" class="fa fa-facebook"></a>
-                        <a href="https://www.youtube.com/@itsmike254" target="_blank" class="fa fa-youtube"></a>
-                        <a href="https://www.instagram.com/p.r.i.n.ce.m.i.k.e" target="_blank" class="fa fa-instagram"></a>
-                        <a href="https://wa.me/0703973225" target="_blank" class="fa fa-whatsapp"></a>
-                    </div>
-                </div>
-                <form action="https://formspree.io/f/mblgqvpa" method="POST" class="contact-form">
-                  <!-- Optional: custom subject and redirect -->
-                  <input type="hidden" name="_subject" value="New Message from Portfolio" />
-                  <!-- <input type="hidden" name="_redirect" value="https://yourdomain.com/thank-you.html" /> -->
-                
-                  <input type="text" name="fullName" placeholder="Your Name" required />
-                  <input type="email" name="emailAddress" placeholder="Your Email" required />
-                  <textarea name="messageInput" placeholder="Your Message" required></textarea>
-                  <button type="submit" class="btn primary-btn">Send Message</button>
-                </form>
+ 
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="contact-content">
+            <div class="contact-info">
+                <p><i class="fa fa-envelope"></i> mwauraelias25@gmail.com</p>
+                <p><i class="fa fa-phone"></i> +254 703 973 225</p>
 
+                <a href="files/eli cv 2025.pdf" download>
+                    <button class="download_btn">Download CV</button>
+                  </a>
+                  
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/p.r.i.n.c.e.m.i.k.e.e.G" target="_blank" class="fa fa-facebook"></a>
+                    <a href="https://www.youtube.com/@itsmike254" target="_blank" class="fa fa-youtube"></a>
+                    <a href="https://www.instagram.com/p.r.i.n.ce.m.i.k.e" target="_blank" class="fa fa-instagram"></a>
+                    <a href="https://wa.me/0703973225" target="_blank" class="fa fa-whatsapp"></a>
+                </div>
+                <div class="back-to-top">
+                    <a href="#top" onclick="scrollToTop()" class="fa fa-arrow-up" aria-label="Back to Top"></a>
+                  </div>
+                  
+                  
             </div>
-        </section>
+            <form class="contact-form" method="post" data-netlify="true">
+                <input type="text" placeholder="Your Name" name="fullName" required>
+                <input type="email" placeholder="Your Email" name="emailAddress" required>
+                <textarea placeholder="Your Message" name="messageInput" required></textarea>
+                <button type="submit" class="btn primary-btn">Send Message</button>
+            </form>
+            
+        </div>
+    
+    </section>
 
     <script src="js/script.js"></script>
 
