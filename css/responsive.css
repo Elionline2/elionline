@@ -284,11 +284,13 @@
     
 }
 
-@media (max-width: 480px) {
-    .overlay {
+@media (max-width: 768px) {
+    .overlay{
         opacity: 1;
     }
+    
 }
+
 
 
 /* back button */
