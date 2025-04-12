@@ -285,10 +285,16 @@
 }
 
 @media (max-width: 768px) {
-    .overlay{
-        opacity: 1;
+    .overlay {
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.4s ease;
     }
-    
+
+    .overlay.show {
+        opacity: 1;
+        pointer-events: auto;
+    }
 }
 
 
