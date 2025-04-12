@@ -169,7 +169,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
  document.addEventListener('DOMContentLoaded', function() {
-    if (window.innerWidth <= 480) {
+    if (window.innerWidth <= 768) {
         const observerOptions = {
             threshold: 0.4,
             rootMargin: '0px 0px -100px 0px' // Slightly early trigger
