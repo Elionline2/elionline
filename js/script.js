@@ -147,25 +147,44 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
+<script>
 document.addEventListener("DOMContentLoaded", () => {
   if (window.innerWidth <= 480) {
-    const observer = new IntersectionObserver(entries => {
-      // Hide all overlays first
-      document.querySelectorAll('.overlay').forEach(o => o.classList.remove('show'));
+    const items = document.querySelectorAll('.showroom-item');
 
-      // Show only the first visible one
-      const visibleEntry = entries.find(entry => entry.isIntersecting);
-      if (visibleEntry) {
-        const overlay = visibleEntry.target.querySelector('.overlay');
-        overlay.classList.add('show');
+    const showClosestOverlay = () => {
+      let closestItem = null;
+      let closestDistance = Infinity;
+      const centerY = window.innerHeight / 2;
+
+      items.forEach(item => {
+        const rect = item.getBoundingClientRect();
+        const itemCenter = rect.top + rect.height / 2;
+        const distance = Math.abs(centerY - itemCenter);
+
+        if (distance < closestDistance) {
+          closestDistance = distance;
+          closestItem = item;
+        }
+      });
+
+      // Hide all overlays
+      items.forEach(item => {
+        item.querySelector('.overlay')?.classList.remove('show');
+      });
+
+      // Show overlay for the closest item
+      if (closestItem) {
+        closestItem.querySelector('.overlay')?.classList.add('show');
       }
-    }, {
-      threshold: 0.6
-    });
+    };
 
-    document.querySelectorAll('.showroom-item').forEach(item => observer.observe(item));
+    // Run on scroll and load
+    window.addEventListener('scroll', showClosestOverlay);
+    showClosestOverlay();
   }
 });
+</script>
 
 
 
