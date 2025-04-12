@@ -285,12 +285,82 @@
 }
 
 @media (max-width: 480px) {
-    .overlay {
-      opacity: 0.7 !important;
-      visibility: visible !important;
+    .showroom-item {
+        overflow: hidden;
+        min-height: 300px;
     }
-  }
-  
+    
+    .overlay {
+        opacity: 1 !important;
+    }
+    
+    /* Initial hidden state */
+    .showroom-item .overlay > * {
+        transform: translateX(-100%);
+        opacity: 0;
+        transition: none;
+    }
+    
+    /* Animation classes - faster slideIn (0.4s), same display time (5s) */
+    .showroom-item.animate .overlay > * {
+        animation: 
+            slideIn 0.4s ease-out forwards, 
+            slideOut 0.4s ease-in forwards 5s;
+    }
+    
+    /* Staggered delays - tighter entry sequence */
+    .showroom-item.animate:nth-child(1) .overlay > * {
+        animation-delay: 
+            0.3s, /* faster entry */
+            5.3s; /* same exit timing */
+    }
+    .showroom-item.animate:nth-child(2) .overlay > * {
+        animation-delay: 
+            0.5s, 
+            5.5s;
+    }
+    .showroom-item.animate:nth-child(3) .overlay > * {
+        animation-delay: 
+            0.7s, 
+            5.7s;
+    }
+    .showroom-item.animate:nth-child(4) .overlay > * {
+        animation-delay: 
+            0.9s, 
+            5.9s;
+    }
+    
+    /* Internal element staggering - slightly tighter */
+    .showroom-item.animate .overlay h3 {
+        animation-delay: 
+            inherit, 
+            calc(inherit + 0s) !important;
+    }
+    .showroom-item.animate .overlay p {
+        animation-delay: 
+            calc(inherit + 0.2s), 
+            calc(inherit + 0.2s) !important;
+    }
+    .showroom-item.animate .overlay .showroom-btn {
+        animation-delay: 
+            calc(inherit + 0.4s), 
+            calc(inherit + 0.4s) !important;
+    }
+    
+    @keyframes slideIn {
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+    
+    @keyframes slideOut {
+        to {
+            transform: translateX(-100%);
+            opacity: 0;
+        }
+    }
+}
 
 
 /* back button */
