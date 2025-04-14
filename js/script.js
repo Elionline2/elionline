@@ -230,3 +230,33 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 });
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    const showroomItems = document.querySelectorAll(".showroom-item");
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            const overlay = entry.target.querySelector(".overlay");
+
+            if (entry.isIntersecting) {
+                // Trigger animation
+                overlay.classList.add("animate");
+            } else {
+                // Reset animation so it can replay
+                overlay.classList.remove("animate");
+                void overlay.offsetWidth; // force reflow (ensures animation restarts)
+            }
+        });
+    }, {
+        threshold: 0.5
+    });
+
+    showroomItems.forEach(item => observer.observe(item));
+});
+
+
