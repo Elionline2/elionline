@@ -417,6 +417,7 @@ img {
     display: block;
 }
 
+/* Base overlay styling */
 .overlay {
     position: absolute;
     top: 0;
@@ -428,27 +429,33 @@ img {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    opacity: 0;
-    transition: var(--transition);
+    opacity: 1;
     padding: 20px;
     text-align: center;
+    overflow: hidden;
 }
 
-.showroom-item:hover .overlay {
-    opacity: 1;
+/* Overlay content default hidden */
+.overlay h3,
+.overlay p,
+.overlay .showroom-btn {
+    opacity: 0;
 }
 
+/* Headline styling */
 .overlay h3 {
     color: var(--accent-color);
     font-size: 1.5rem;
     margin-bottom: 10px;
 }
 
+/* Paragraph styling */
 .overlay p {
     color: var(--light-text);
     margin-bottom: 20px;
 }
 
+/* Button styling */
 .showroom-btn {
     padding: 10px 25px;
     background-color: var(--accent-color);
@@ -460,6 +467,48 @@ img {
 
 .showroom-btn:hover {
     background-color: var(--light-text);
+}
+
+/* Optional CTA section styling */
+.showroom-cta {
+    text-align: center;
+    margin-top: 50px;
+}
+
+/* Animation keyframes: enter from right, pause, exit to left */
+@keyframes slideInOut {
+    0% {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    10% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    80% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+}
+
+/* Animation triggers (added via JS) */
+.overlay.animate h3 {
+    animation: slideInOut 5s ease-in-out forwards;
+    animation-delay: 0.2s;
+}
+
+.overlay.animate p {
+    animation: slideInOut 5s ease-in-out forwards;
+    animation-delay: 0.6s;
+}
+
+.overlay.animate .showroom-btn {
+    animation: slideInOut 5s ease-in-out forwards;
+    animation-delay: 1s;
 }
 
 .showroom-cta {
