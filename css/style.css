@@ -429,10 +429,11 @@ img {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    opacity: 1;
     padding: 20px;
     text-align: center;
     overflow: hidden;
+    opacity: 0;
+    transform: translateX(100%); /* Start off-screen */
 }
 
 /* Overlay content default hidden */
@@ -473,6 +474,67 @@ img {
 .showroom-cta {
     text-align: center;
     margin-top: 50px;
+}
+
+/* Animation keyframes: overlay & content */
+@keyframes overlaySlideInOut {
+    0% {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    10% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    80% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+}
+
+/* Animation triggers for the overlay itself */
+.overlay.animate {
+    animation: overlaySlideInOut 5s ease-in-out forwards;
+}
+
+/* Content animation triggers (added via JS) */
+.overlay.animate h3 {
+    animation: slideInOut 5s ease-in-out forwards;
+    animation-delay: 0.4s;
+}
+
+.overlay.animate p {
+    animation: slideInOut 5s ease-in-out forwards;
+    animation-delay: 0.8s;
+}
+
+.overlay.animate .showroom-btn {
+    animation: slideInOut 5s ease-in-out forwards;
+    animation-delay: 1.2s;
+}
+
+/* Existing content animation for individual elements */
+@keyframes slideInOut {
+    0% {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    10% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    80% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
 }
 
 /* Animation keyframes: enter from right, pause, exit to left */
