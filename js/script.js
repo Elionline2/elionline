@@ -259,4 +259,3 @@ document.addEventListener("DOMContentLoaded", () => {
     showroomItems.forEach(item => observer.observe(item));
 });
 
-
