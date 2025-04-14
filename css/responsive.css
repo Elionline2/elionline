@@ -289,26 +289,32 @@
         overflow: hidden;
         min-height: 300px;
     }
-    
+
     .overlay {
         opacity: 1 !important;
+        transform: translateX(100%); /* Start off-screen */
     }
-    
-    /* Initial hidden state */
+
+    /* Initial hidden state for content */
     .showroom-item .overlay > * {
         transform: translateX(-100%);
         opacity: 0;
         transition: none;
     }
-    
-    /* Animation classes - faster slideIn (0.4s), same display time (5s) */
+
+    /* Animation for the overlay background and content */
+    .showroom-item.animate .overlay {
+        animation: 
+            overlaySlideInOut 5s ease-in-out forwards;
+    }
+
     .showroom-item.animate .overlay > * {
         animation: 
             slideIn 0.4s ease-out forwards, 
             slideOut 0.4s ease-in forwards 5s;
     }
-    
-    /* Staggered delays - tighter entry sequence */
+
+    /* Staggered delays - faster and tighter entry sequence */
     .showroom-item.animate:nth-child(1) .overlay > * {
         animation-delay: 
             0.3s, /* faster entry */
@@ -329,8 +335,8 @@
             0.9s, 
             5.9s;
     }
-    
-    /* Internal element staggering - slightly tighter */
+
+    /* Internal element staggering */
     .showroom-item.animate .overlay h3 {
         animation-delay: 
             inherit, 
@@ -346,14 +352,35 @@
             calc(inherit + 0.4s), 
             calc(inherit + 0.4s) !important;
     }
-    
+
+    /* Keyframes for overlay background animation */
+    @keyframes overlaySlideInOut {
+        0% {
+            opacity: 0;
+            transform: translateX(100%);
+        }
+        10% {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        80% {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        100% {
+            opacity: 0;
+            transform: translateX(-100%);
+        }
+    }
+
+    /* Keyframes for content animation */
     @keyframes slideIn {
         to {
             transform: translateX(0);
             opacity: 1;
         }
     }
-    
+
     @keyframes slideOut {
         to {
             transform: translateX(-100%);
