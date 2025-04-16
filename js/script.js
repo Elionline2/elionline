@@ -1,3 +1,35 @@
+
+
+// Loader Javascript Coding Start
+
+    window.addEventListener('load', function () {
+        const loader = document.getElementById('loader');
+        const content = document.getElementById('main-content');
+
+        // Start a minimum timer of 7 seconds
+        const MIN_LOAD_TIME = 500;
+        const startTime = Date.now();
+
+        function showContent() {
+            const elapsed = Date.now() - startTime;
+            const remainingTime = Math.max(MIN_LOAD_TIME - elapsed, 0);
+
+            setTimeout(() => {
+                loader.style.opacity = 0;
+                loader.style.pointerEvents = 'none';
+                content.style.opacity = 1;
+                loader.style.display = 'none';
+            }, remainingTime);
+        }
+
+        showContent();
+    });
+
+
+//Loader javascript Coding Stop
+
+
+
 // Image Slider Configuration
 const sliderConfig = {
     images: [
