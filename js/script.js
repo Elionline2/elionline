@@ -7,7 +7,7 @@
         const content = document.getElementById('main-content');
 
         // Start a minimum timer of 7 seconds
-        const MIN_LOAD_TIME = 500;
+        const MIN_LOAD_TIME = 100;
         const startTime = Date.now();
 
         function showContent() {
