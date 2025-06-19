@@ -7,7 +7,7 @@
         const content = document.getElementById('main-content');
 
         // Start a minimum timer of 7 seconds
-        const MIN_LOAD_TIME = 100;
+        const MIN_LOAD_TIME = 50;
         const startTime = Date.now();
 
         function showContent() {
@@ -39,7 +39,7 @@ const sliderConfig = {
         "images/image4.jpg"
     ],
     slideInterval: 5000, // 5 seconds
-    fadeDuration: 800   // 0.8 seconds
+    fadeDuration: 900   // 0.8 seconds
 };
 
 // DOM Elements
